@@ -74,9 +74,33 @@ export default {
           }
         ],
         firstLetter: [
-          { required: true, message: "检索首字母不能为空", trigger: "blur" }
+          {
+            validator: (rule, value, callback) => {
+              if (value === "") {
+                callback(new Error("首字母必须填写"));
+              } else if (!/^[a-zA-Z]$/.test(value)) {
+                callback(new Error("首字母必须在a-z或者A-Z之间"));
+              } else {
+                callback();
+              }
+            },
+            trigger: "blur"
+          }
         ],
-        sort: [{ required: true, message: "排序不能为空", trigger: "blur" }]
+        sort: [
+          {
+            validator: (rule, value, callback) => {
+              if (value === "") {
+                callback(new Error("排序字段必须填写"));
+              } else if (!/^\d+$/.test(value)) {
+                callback(new Error("排序必须是一个大于等于0的整数"));
+              } else {
+                callback();
+              }
+            },
+            trigger: "blur"
+          }
+        ]
       }
     };
   },

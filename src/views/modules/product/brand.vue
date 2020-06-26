@@ -24,12 +24,15 @@
       border
       v-loading="dataListLoading"
       @selection-change="selectionChangeHandle"
-      style="width: 100%;"
-    >
+      style="width: 100%;">
       <el-table-column type="selection" header-align="center" align="center" width="50"></el-table-column>
       <el-table-column prop="brandId" header-align="center" align="center" label="品牌id"></el-table-column>
       <el-table-column prop="name" header-align="center" align="center" label="品牌名"></el-table-column>
-      <el-table-column prop="logo" header-align="center" align="center" label="品牌logo地址"></el-table-column>
+      <el-table-column prop="logo" header-align="center" align="center" label="品牌logo地址">
+        <template slot-scope="scope">
+          <img :src="scope.row.logo" style="width: 60px; height: 40px"/>
+        </template>
+      </el-table-column>
       <el-table-column prop="descript" header-align="center" align="center" label="介绍"></el-table-column>
       <el-table-column prop="showStatus" header-align="center" align="center" label="显示状态">
         <template slot-scope="scope">
@@ -94,7 +97,7 @@ export default {
     updateBrandStatus(data) {
       let { brandId, showStatus } = data;
       this.$http({
-        url: this.$http.adornUrl("/product/brand/update"),
+        url: this.$http.adornUrl("/product/brand/update/status"),
         method: "post",
         data: this.$http.adornData({ brandId, showStatus }, false)
       }).then(({ data }) => {
