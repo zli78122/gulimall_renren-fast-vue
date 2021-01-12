@@ -28,12 +28,17 @@ Understanding the following **four concepts** is crucial for you to understand t
 ![3.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/chart/3.png "3.png")
 
 ## Show
-![4.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/4-2.png "4.png")
-![5.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/5-2.png "5.png")
-![6.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/6.png "6.png")
-![7.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/7.png "7.png")
-![8.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/8.png "8.png")
-![9.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/9.png "9.png")
+![4.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/4-2.png "4.png")  
+<br />
+![5.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/5-2.png "5.png")  
+<br />
+![6.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/6.png "6.png")  
+<br />
+![7.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/7.png "7.png")  
+<br />
+![8.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/8.png "8.png")  
+<br />
+![9.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/9.png "9.png")  
 
 ## Tech Stacks
 IntelliJ IDEA, Visual Studio Code, Kibana
