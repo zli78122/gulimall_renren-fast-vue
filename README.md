@@ -1,5 +1,10 @@
 # Gulimall: Distributed Architecture E-commerce Platform
 
+*Video: https://youtu.be/lyR6W9Feu_U*  
+
+*Backend Source Code: https://github.com/zli78122/gulimall*  
+*Frontend Source Code: https://github.com/zli78122/gulimall_renren-fast-vue*  
+
 ## Introduction
 * Developed a distributed e-commerce system based on **Spring Boot** and **Spring Cloud**, used **Docker** to manage multiple middleware and **Nginx** for dynamic and static separation, reverse proxy, and load balancing.
 * Introduced a complete set of **microservice** governance solution: **Nacos** as a registration and configuration center, **Gateway** as a gateway, **Feign** for remote call, **Ribbon** for load balancing, **Sentinel** for flow protection, **Sleuth** and **Zipkin** as a tracing system.
