@@ -27,6 +27,14 @@ Understanding the following **four concepts** is crucial for you to understand t
 * **Flash Sale**: Online store offers substantial discounts or promotions for a very short period of time. The main goals of a flash sale strategy are to get online shoppers to impulse buy, to increase short-term sales, or to sell your surplus stock. So a flash sale means a very high amount of concurrency, which may reach millions of concurrency.
 ![3.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/chart/3.png "3.png")
 
+## Show
+![4.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/4.png "4.png")
+![5.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/5.png "5.png")
+![6.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/6.png "6.png")
+![7.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/7.png "7.png")
+![8.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/8.png "8.png")
+![9.png](https://zli78122-gulimall.oss-us-west-1.aliyuncs.com/show/9.png "9.png")
+
 ## Tech Stacks
 IntelliJ IDEA, Visual Studio Code, Kibana
 
