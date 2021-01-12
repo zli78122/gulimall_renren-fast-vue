@@ -2,21 +2,21 @@
   <div class="mod-config">
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
       <el-form-item>
-        <el-input v-model="dataForm.key" placeholder="参数名" clearable></el-input>
+        <el-input v-model="dataForm.key" placeholder="Name" clearable></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="getDataList()">查询</el-button>
+        <el-button @click="getDataList()">Search</el-button>
         <el-button
           v-if="isAuth('coupon:seckillskurelation:save')"
           type="primary"
           @click="addOrUpdateHandle()"
-        >新增</el-button>
+        >Add</el-button>
         <el-button
           v-if="isAuth('coupon:seckillskurelation:delete')"
           type="danger"
           @click="deleteHandle()"
           :disabled="dataListSelections.length <= 0"
-        >批量删除</el-button>
+        >Batch Delete</el-button>
       </el-form-item>
     </el-form>
     <el-table
@@ -27,22 +27,22 @@
       style="width: 100%;"
     >
       <el-table-column type="selection" header-align="center" align="center" width="50"></el-table-column>
-      <el-table-column prop="id" header-align="center" align="center" label="id"></el-table-column>
+      <el-table-column prop="id" header-align="center" align="center" label="Id"></el-table-column>
       <el-table-column
         prop="promotionSessionId"
         header-align="center"
         align="center"
-        label="场次id"
+        label="Session Id"
       ></el-table-column>
-      <el-table-column prop="skuId" header-align="center" align="center" label="商品id"></el-table-column>
-      <el-table-column prop="seckillPrice" header-align="center" align="center" label="秒杀价格"></el-table-column>
-      <el-table-column prop="seckillCount" header-align="center" align="center" label="秒杀总量"></el-table-column>
-      <el-table-column prop="seckillLimit" header-align="center" align="center" label="每人限购数量"></el-table-column>
-      <el-table-column prop="seckillSort" header-align="center" align="center" label="排序"></el-table-column>
-      <el-table-column fixed="right" header-align="center" align="center" width="150" label="操作">
+      <el-table-column prop="skuId" header-align="center" align="center" label="Sku Id"></el-table-column>
+      <el-table-column prop="seckillPrice" header-align="center" align="center" label="Price"></el-table-column>
+      <el-table-column prop="seckillCount" header-align="center" align="center" label="Quantity"></el-table-column>
+      <el-table-column prop="seckillLimit" header-align="center" align="center" label="Purchase Limit"></el-table-column>
+      <el-table-column prop="seckillSort" header-align="center" align="center" label="Sort"></el-table-column>
+      <el-table-column fixed="right" header-align="center" align="center" width="150" label="Actions">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">修改</el-button>
-          <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">删除</el-button>
+          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">Update</el-button>
+          <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">Delete</el-button>
         </template>
       </el-table-column>
     </el-table>

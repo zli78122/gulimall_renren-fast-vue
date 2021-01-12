@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    :title="!dataForm.id ? '新增' : '修改'"
+    :title="!dataForm.id ? 'Add' : 'Update'"
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form
@@ -9,16 +9,16 @@
       ref="dataForm"
       @keyup.enter.native="dataFormSubmit()"
       label-width="140px">
-      <el-form-item label="品牌名" prop="name">
-        <el-input v-model="dataForm.name" placeholder="品牌名"></el-input>
+      <el-form-item label="Name" prop="name">
+        <el-input v-model="dataForm.name" placeholder="Brand Name"></el-input>
       </el-form-item>
-      <el-form-item label="品牌logo地址" prop="logo">
+      <el-form-item label="Logo" prop="logo">
         <single-upload v-model="dataForm.logo"></single-upload>
       </el-form-item>
-      <el-form-item label="介绍" prop="descript">
-        <el-input v-model="dataForm.descript" placeholder="介绍"></el-input>
+      <el-form-item label="Intro" prop="descript">
+        <el-input v-model="dataForm.descript" placeholder="Introduction"></el-input>
       </el-form-item>
-      <el-form-item label="显示状态" prop="showStatus">
+      <el-form-item label="Status" prop="showStatus">
         <el-switch
           v-model="dataForm.showStatus"
           active-color="#13ce66"
@@ -27,16 +27,16 @@
           :inactive-value="0"
         ></el-switch>
       </el-form-item>
-      <el-form-item label="检索首字母" prop="firstLetter">
-        <el-input v-model="dataForm.firstLetter" placeholder="检索首字母"></el-input>
+      <el-form-item label="1st Letter" prop="firstLetter">
+        <el-input v-model="dataForm.firstLetter" placeholder="1st Letter for Search"></el-input>
       </el-form-item>
-      <el-form-item label="排序" prop="sort">
-        <el-input v-model.number="dataForm.sort" placeholder="排序"></el-input>
+      <el-form-item label="Sort" prop="sort">
+        <el-input v-model.number="dataForm.sort" placeholder="Sort"></el-input>
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="visible = false">取消</el-button>
-      <el-button type="primary" @click="dataFormSubmit()">确定</el-button>
+      <el-button @click="visible = false">Cancel</el-button>
+      <el-button type="primary" @click="dataFormSubmit()">Confirm</el-button>
     </span>
   </el-dialog>
 </template>

@@ -1,28 +1,48 @@
 <template>
   <div class="mod-home">
-    <h3>项目介绍</h3>
+    <h3>Project Introduction</h3>
     <ul>
-      <li>renren-fast-vue基于vue、element-ui构建开发，实现<a href="https://gitee.com/renrenio/renren-fast" target="_blank">renren-fast</a>后台管理前端功能，提供一套更优的前端解决方案</li>
-      <li>前后端分离，通过token进行数据交互，可独立部署</li>
-      <li>主题定制，通过scss变量统一一站式定制</li>
-      <li>动态菜单，通过菜单管理统一管理访问路由</li>
-      <li>数据切换，通过mock配置对接口数据／mock模拟数据进行切换</li>
-      <li>发布时，可动态配置CDN静态资源／切换新旧版本</li>
-      <li>演示地址：<a href="http://demo.open.renren.io/renren-fast" target="_blank">http://demo.open.renren.io/renren-fast</a> (账号密码：admin/admin)</li>
+      <li>Developed a distributed e-commerce system based on Spring Boot and Spring Cloud, used Docker to manage multiple middleware and Nginx for dynamic and static separation, reverse proxy, and load balancing.</li>
+      <li>Introduced a complete set of microservice governance solution: Nacos as a registration and configuration center, Gateway as a gateway, Feign for remote call, Ribbon for load balancing, Sentinel for flow protection, Sleuth and Zipkin as a tracing system.</li>
+      <li>Solved most of the problems faced by a highly concurrent distributed system: Spring Cache and Redis as distributed cache, Elasticsearch for faster product retrieval time, Spring Session for session data sharing, thread pool and asynchronous task for stability and performance.</li>
+      <li>Implemented generating/canceling order and locking/unlocking inventory using RabbitMQ delayed queue based on BASE theory and Flexible Transaction - message reliability and eventual consistency of distributed transactions.</li>
+      <li>Completed product flash sale using Redisson distributed lock - Semaphore and MQ, which can process 50,000 QPS in one Tomcat server.</li>
     </ul>
-    <h3>获取帮助</h3>
+    <h3>Links</h3>
     <ul>
-      <li>官方社区：<a href="https://www.renren.io/community" target="_blank">https://www.renren.io/community</a></li>
-      <li>前端Git地址：<a href="https://github.com/renrenio/renren-fast-vue" target="_blank">https://github.com/renrenio/renren-fast-vue</a></li>
-      <li>后台Git地址：<a href="https://gitee.com/renrenio/renren-fast" target="_blank">https://gitee.com/renrenio/renren-fast</a></li>
-      <li>代码生成器：<a href="https://gitee.com/renrenio/renren-generator" target="_blank">https://gitee.com/renrenio/renren-generator</a></li>
-      <li>如需关注项目最新动态，请Watch、Star项目，同时也是对项目最好的支持</li>
+      <li>Frontend Source Code: <a href="https://github.com/zli78122/gulimall_renren-fast-vue" target="_blank">https://github.com/zli78122/gulimall_renren-fast-vue</a></li>
+      <li>Backend Source Code: <a href="https://github.com/zli78122/gulimall" target="_blank">https://github.com/zli78122/gulimall</a></li>
+      <li>Github: <a href="https://github.com/zli78122" target="_blank">https://github.com/zli78122</a></li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/zhengyu-li-83b85119b/" target="_blank">https://www.linkedin.com/in/zhengyu-li-83b85119b/</a></li>
     </ul>
-    <h3>官方QQ群</h3>
-    <ul>
-      <li>高级群：324780204(大牛云集，跟大牛学习新技能)</li>
-      <li>普通群：145799952(学习交流，互相解答各种疑问)</li>
-    </ul>
+    <h3>Explanations</h3>
+    <h4 style="margin-bottom: 10px">1. Relationships between SPU, SKU, Brand, Category, and Product Attribute</h4>
+    <p class="homep">Understanding the following four concepts is crucial for you to understand the relationship between these entities.</p>
+    <span class="homespan">1. Sales Attribute: The different attribute values of the sales attributes of a product will lead to differences in the sales price of this product.</span>
+    <br />
+    <span class="homespan" style="margin-left: 50px;">e.g. iPhone 12 Pro Max 256GB and iPhone 12 Pro Max 512GB have a different sales price. <span style="margin-left: 0; color: red;">So "capacity" is a sales attribute</span></span>
+    <br />
+    <span class="homespan">2. Regular Attribute: It will not affect the price of the product, like the length, weight, ppi of iPhone 12 Pro Max.</span>
+    <br />
+    <span class="homespan">3. SPU (Standard Product Unit): It is a type of goods, such as a type of iPhone, like iPhone 12 Pro Max.</span>
+    <br />
+    <span class="homespan">4. SKU (Stock keeping Unit): It is a specific product unit based on the SPU, like <span class="red">iPhone 12 Pro Max Gold+256GB</span>, <span class="red">iPhone 12 Pro Max Gold+512GB</span>, <span class="red">iPhone 12 Pro Max Blue+256GB</span>, <span class="red">iPhone 12 Pro Max Sliver+512GB</span>. 
+      i.e. SKU is a combination of various Sales Attributes (color + capacity) of the SPU.</span>
+    <br />
+    <img src="~@/assets/img/ER.png" class="er">
+
+    <h4 style="margin-top: 100px; margin-bottom: 10px">2. Flow Chart of Generating/Canceling Order and Locking/Unlocking Inventory (Delayed Queue, BASE Theory, Distributed Flexible Transaction)</h4>
+    <span class="homespan"><strong>Locking Inventory</strong>: After the order is generated and before the user pays, the product purchased by current user will be locked in the inventory, which means that during this period, the product only belongs to the current user, and any other users can not purchase this product.</span>
+    <br />
+    <span class="homespan"><strong>Unlocking Inventory</strong>: When the order is paid or cancelled, the system will unlock the inventory.</span>
+    <br />
+    <img src="~@/assets/img/Order.png" class="order">
+    
+    <h4 style="margin-top: 100px">3. Flow Chart of Product Flash Sale (Distributed Lock - Semaphore, MQ)</h4>
+    <span class="homespan"><strong>Flash Sale</strong>: Online store offers substantial discounts or promotions for a very short period of time. The main goals of a flash sale strategy are to get online shoppers to impulse buy, to increase short-term sales, or to sell your surplus stock.
+    <span style="color: red;">So a flash sale means a very high amount of concurrency, which may reach millions of concurrency.</span></span>
+    <br />
+    <img src="~@/assets/img/FlashSale.png" class="flashsale">
   </div>
 </template>
 
@@ -35,5 +55,29 @@
   .mod-home {
     line-height: 1.5;
   }
+  .er {
+    width: 1050px;
+    height: 600px
+  }
+  .homep {
+    font-size: 15px;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  .homespan {
+    margin-left: 30px;
+    font-size: 15px ;
+  }
+  span .red {
+    margin-left: 10px;
+    color: red;
+  }
+  .order {
+    width: 1050px;
+    height: 750px
+  }
+  .flashsale {
+    width: 100%;
+    margin-bottom: 50px;
+  }
 </style>
-

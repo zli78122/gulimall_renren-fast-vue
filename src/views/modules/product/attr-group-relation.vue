@@ -1,14 +1,14 @@
 <template>
   <div>
     <el-dialog :close-on-click-modal="false" :visible.sync="visible" @closed="dialogClose">
-      <el-dialog width="40%" title="选择属性" :visible.sync="innerVisible" append-to-body>
+      <el-dialog width="40%" title="Choose Attributes" :visible.sync="innerVisible" append-to-body>
         <div>
           <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
             <el-form-item>
-              <el-input v-model="dataForm.key" placeholder="参数名" clearable></el-input>
+              <el-input v-model="dataForm.key" placeholder="Attribute Name" clearable></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button @click="getDataList()">查询</el-button>
+              <el-button @click="getDataList()">Search</el-button>
             </el-form-item>
           </el-form>
           <el-table
@@ -19,10 +19,10 @@
             style="width: 100%;"
           >
             <el-table-column type="selection" header-align="center" align="center"></el-table-column>
-            <el-table-column prop="attrId" header-align="center" align="center" label="属性id"></el-table-column>
-            <el-table-column prop="attrName" header-align="center" align="center" label="属性名"></el-table-column>
-            <el-table-column prop="icon" header-align="center" align="center" label="属性图标"></el-table-column>
-            <el-table-column prop="valueSelect" header-align="center" align="center" label="可选值列表"></el-table-column>
+            <el-table-column prop="attrId" header-align="center" align="center" label="Attri. Id"></el-table-column>
+            <el-table-column prop="attrName" header-align="center" align="center" label="Attri. Name"></el-table-column>
+            <el-table-column prop="icon" header-align="center" align="center" label="Attri. Icon"></el-table-column>
+            <el-table-column prop="valueSelect" header-align="center" align="center" label="Option Values"></el-table-column>
           </el-table>
           <el-pagination
             @size-change="sizeChangeHandle"
@@ -35,18 +35,18 @@
           ></el-pagination>
         </div>
         <div slot="footer" class="dialog-footer">
-          <el-button @click="innerVisible = false">取 消</el-button>
-          <el-button type="primary" @click="submitAddRealtion">确认新增</el-button>
+          <el-button @click="innerVisible = false">Cancel</el-button>
+          <el-button type="primary" @click="submitAddRealtion">Confirm</el-button>
         </div>
       </el-dialog>
       <el-row>
         <el-col :span="24">
-          <el-button type="primary" @click="addRelation">新建关联</el-button>
+          <el-button type="primary" @click="addRelation">New Relation</el-button>
           <el-button
             type="danger"
             @click="batchDeleteRelation"
             :disabled="dataListSelections.length <= 0"
-          >批量删除</el-button>
+          >Batch Delete</el-button>
           <!--  -->
           <el-table
             :data="relationAttrs"
@@ -56,8 +56,8 @@
           >
             <el-table-column type="selection" header-align="center" align="center" width="50"></el-table-column>
             <el-table-column prop="attrId" label="#"></el-table-column>
-            <el-table-column prop="attrName" label="属性名"></el-table-column>
-            <el-table-column prop="valueSelect" label="可选值">
+            <el-table-column prop="attrName" label="Attribute Name"></el-table-column>
+            <el-table-column prop="valueSelect" label="Option Values">
               <template slot-scope="scope">
                 <el-tooltip placement="top">
                   <div slot="content">
@@ -70,9 +70,9 @@
                 </el-tooltip>
               </template>
             </el-table-column>
-            <el-table-column fixed="right" header-align="center" align="center" label="操作">
+            <el-table-column fixed="right" header-align="center" align="center" label="Actions">
               <template slot-scope="scope">
-                <el-button type="text" size="small" @click="relationRemove(scope.row.attrId)">移除</el-button>
+                <el-button type="text" size="small" @click="relationRemove(scope.row.attrId)">Remove</el-button>
               </template>
             </el-table-column>
           </el-table>

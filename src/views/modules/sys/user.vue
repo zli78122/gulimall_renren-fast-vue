@@ -2,12 +2,12 @@
   <div class="mod-user">
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
       <el-form-item>
-        <el-input v-model="dataForm.userName" placeholder="用户名" clearable></el-input>
+        <el-input v-model="dataForm.userName" placeholder="Username" clearable></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="getDataList()">查询</el-button>
-        <el-button v-if="isAuth('sys:user:save')" type="primary" @click="addOrUpdateHandle()">新增</el-button>
-        <el-button v-if="isAuth('sys:user:delete')" type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
+        <el-button @click="getDataList()">Search</el-button>
+        <el-button v-if="isAuth('sys:user:save')" type="primary" @click="addOrUpdateHandle()">Add</el-button>
+        <el-button v-if="isAuth('sys:user:delete')" type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">Batch Delete</el-button>
       </el-form-item>
     </el-form>
     <el-table
@@ -33,28 +33,28 @@
         prop="username"
         header-align="center"
         align="center"
-        label="用户名">
+        label="Username">
       </el-table-column>
       <el-table-column
         prop="email"
         header-align="center"
         align="center"
-        label="邮箱">
+        label="Email">
       </el-table-column>
       <el-table-column
         prop="mobile"
         header-align="center"
         align="center"
-        label="手机号">
+        label="Phone Number">
       </el-table-column>
       <el-table-column
         prop="status"
         header-align="center"
         align="center"
-        label="状态">
+        label="Status">
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.status === 0" size="small" type="danger">禁用</el-tag>
-          <el-tag v-else size="small">正常</el-tag>
+          <el-tag v-if="scope.row.status === 0" size="small" type="danger">Disable</el-tag>
+          <el-tag v-else size="small">Normal</el-tag>
         </template>
       </el-table-column>
       <el-table-column
@@ -62,17 +62,17 @@
         header-align="center"
         align="center"
         width="180"
-        label="创建时间">
+        label="Create Time">
       </el-table-column>
       <el-table-column
         fixed="right"
         header-align="center"
         align="center"
         width="150"
-        label="操作">
+        label="Actions">
         <template slot-scope="scope">
-          <el-button v-if="isAuth('sys:user:update')" type="text" size="small" @click="addOrUpdateHandle(scope.row.userId)">修改</el-button>
-          <el-button v-if="isAuth('sys:user:delete')" type="text" size="small" @click="deleteHandle(scope.row.userId)">删除</el-button>
+          <el-button v-if="isAuth('sys:user:update')" type="text" size="small" @click="addOrUpdateHandle(scope.row.userId)">Update</el-button>
+          <el-button v-if="isAuth('sys:user:delete')" type="text" size="small" @click="deleteHandle(scope.row.userId)">Delete</el-button>
         </template>
       </el-table-column>
     </el-table>

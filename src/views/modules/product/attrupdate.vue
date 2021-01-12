@@ -46,7 +46,7 @@
             </el-tab-pane>
           </el-tabs>
           <div style="margin:auto">
-            <el-button type="success" style="float:right" @click="submitSpuAttrs">确认修改</el-button>
+            <el-button type="success" style="float:right" @click="submitSpuAttrs">Confirm Updating</el-button>
           </div>
         </el-card>
       </el-col>

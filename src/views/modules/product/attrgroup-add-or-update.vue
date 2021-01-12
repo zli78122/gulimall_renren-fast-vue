@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    :title="!dataForm.id ? '新增' : '修改'"
+    :title="!dataForm.id ? 'Add' : 'Update'"
     :close-on-click-modal="false"
     :visible.sync="visible"
     @closed="dialogClose">
@@ -10,23 +10,23 @@
       ref="dataForm"
       @keyup.enter.native="dataFormSubmit()"
       label-width="120px">
-      <el-form-item label="组名" prop="attrGroupName">
-        <el-input v-model="dataForm.attrGroupName" placeholder="组名"></el-input>
+      <el-form-item label="Name" prop="attrGroupName">
+        <el-input v-model="dataForm.attrGroupName" placeholder="Attribute Group Name"></el-input>
       </el-form-item>
-      <el-form-item label="排序" prop="sort">
-        <el-input v-model="dataForm.sort" placeholder="排序"></el-input>
+      <el-form-item label="Sort" prop="sort">
+        <el-input v-model="dataForm.sort" placeholder="Sort"></el-input>
       </el-form-item>
-      <el-form-item label="描述" prop="descript">
-        <el-input v-model="dataForm.descript" placeholder="描述"></el-input>
+      <el-form-item label="Desp" prop="descript">
+        <el-input v-model="dataForm.descript" placeholder="Description"></el-input>
       </el-form-item>
-      <el-form-item label="组图标" prop="icon">
-        <el-input v-model="dataForm.icon" placeholder="组图标"></el-input>
+      <el-form-item label="Icon" prop="icon">
+        <el-input v-model="dataForm.icon" placeholder="Icon"></el-input>
       </el-form-item>
-      <el-form-item label="所属分类" prop="catelogId">
+      <el-form-item label="Category" prop="catelogId">
         <el-cascader
           style="width: 100%"
           filterable
-          placeholder="试试搜索：手机"
+          placeholder="Try to search: Phone"
           v-model="catelogPath"
           :options="categories"
           :props="props"
@@ -34,8 +34,8 @@
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="visible = false">取消</el-button>
-      <el-button type="primary" @click="dataFormSubmit()">确定</el-button>
+      <el-button @click="visible = false">Cancel</el-button>
+      <el-button type="primary" @click="dataFormSubmit()">Confirm</el-button>
     </span>
   </el-dialog>
 </template>

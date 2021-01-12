@@ -26,31 +26,31 @@
         prop="id"
         header-align="center"
         align="center"
-        label="id">
+        label="Id">
       </el-table-column>
       <el-table-column
         prop="spuId"
         header-align="center"
         align="center"
-        label="">
+        label="SPU Id">
       </el-table-column>
       <el-table-column
         prop="growBounds"
         header-align="center"
         align="center"
-        label="成长积分">
+        label="Growth Points">
       </el-table-column>
       <el-table-column
         prop="buyBounds"
         header-align="center"
         align="center"
-        label="购物积分">
+        label="Shopping Points">
       </el-table-column>
       <el-table-column
         prop="work"
         header-align="center"
         align="center"
-        label="优惠生效情况">
+        label="Status">
         <!-- [1111（四个状态位，从右到左）;0 - 无优惠，成长积分是否赠送;1 - 无优惠，购物积分是否赠送;2 - 有优惠，成长积分是否赠送;3 - 有优惠，购物积分是否赠送【状态位0：不赠送，1：赠送】] -->
       </el-table-column>
       <el-table-column
@@ -58,10 +58,10 @@
         header-align="center"
         align="center"
         width="150"
-        label="操作">
+        label="Actions">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">修改</el-button>
-          <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">删除</el-button>
+          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">Update</el-button>
+          <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">Delete</el-button>
         </template>
       </el-table-column>
     </el-table>

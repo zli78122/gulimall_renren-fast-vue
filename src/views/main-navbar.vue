@@ -2,8 +2,8 @@
   <nav class="site-navbar" :class="'site-navbar--' + navbarLayoutType">
     <div class="site-navbar__header">
       <h1 class="site-navbar__brand" @click="$router.push({ name: 'home' })">
-        <a class="site-navbar__brand-lg" href="javascript:;">人人快速开发平台</a>
-        <a class="site-navbar__brand-mini" href="javascript:;">人人</a>
+        <a class="site-navbar__brand-lg" href="javascript:;">Admin System</a>
+        <a class="site-navbar__brand-mini" href="javascript:;">Guli</a>
       </h1>
     </div>
     <div class="site-navbar__body clearfix">
@@ -26,11 +26,11 @@
         </el-menu-item>
         <el-menu-item index="2">
           <el-badge value="hot">
-            <a href="https://www.renren.io/" target="_blank">官方社区</a>
+            <a href="https://www.renren.io/" target="_blank">LinkedIn</a>
           </el-badge>
         </el-menu-item>
         <el-submenu index="3">
-          <template slot="title">Git源码</template>
+          <template slot="title">Github</template>
           <el-menu-item index="2-1"><a href="https://github.com/renrenio/renren-fast-vue" target="_blank">前端</a></el-menu-item>
           <el-menu-item index="2-2"><a href="https://gitee.com/renrenio/renren-fast" target="_blank">后台</a></el-menu-item>
           <el-menu-item index="2-3"><a href="https://gitee.com/renrenio/renren-generator" target="_blank">代码生成器</a></el-menu-item>
@@ -41,8 +41,8 @@
               <img src="~@/assets/img/avatar.png" :alt="userName">{{ userName }}
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item @click.native="updatePasswordHandle()">修改密码</el-dropdown-item>
-              <el-dropdown-item @click.native="logoutHandle()">退出</el-dropdown-item>
+              <el-dropdown-item @click.native="updatePasswordHandle()">Change Password</el-dropdown-item>
+              <el-dropdown-item @click.native="logoutHandle()">Sign out</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </el-menu-item>

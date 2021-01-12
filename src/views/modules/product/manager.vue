@@ -2,21 +2,21 @@
   <div class="mod-config">
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
       <el-form :inline="true" :model="dataForm">
-        <el-form-item label="分类">
+        <el-form-item label="Category">
           <category-cascader :catelogPath.sync="catelogPath"></category-cascader>
         </el-form-item>
-        <el-form-item label="品牌">
+        <el-form-item label="Brand">
           <brand-select style="width:160px"></brand-select>
         </el-form-item>
-        <el-form-item label="价格">
+        <el-form-item label="Prices">
           <el-input-number style="width:160px" v-model="dataForm.price.min" :min="0"></el-input-number>-
           <el-input-number style="width:160px" v-model="dataForm.price.max" :min="0"></el-input-number>
         </el-form-item>
-        <el-form-item label="检索">
+        <!-- <el-form-item label="检索">
           <el-input style="width:160px" v-model="dataForm.key" clearable></el-input>
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item>
-          <el-button type="primary" @click="searchSkuInfo">查询</el-button>
+          <el-button type="primary" @click="searchSkuInfo">Search</el-button>
         </el-form-item>
       </el-form>
     </el-form>
@@ -45,26 +45,26 @@
         </template>
       </el-table-column>
       <el-table-column type="selection" header-align="center" align="center" width="50"></el-table-column>
-      <el-table-column prop="skuId" header-align="center" align="center" label="skuId"></el-table-column>
-      <el-table-column prop="skuName" header-align="center" align="center" label="名称"></el-table-column>
-      <el-table-column prop="skuDefaultImg" header-align="center" align="center" label="默认图片">
+      <el-table-column prop="skuId" header-align="center" align="center" label="SKU Id"></el-table-column>
+      <el-table-column prop="skuName" header-align="center" align="center" label="Name"></el-table-column>
+      <el-table-column prop="skuDefaultImg" header-align="center" align="center" label="Default Image">
         <template slot-scope="scope">
           <img :src="scope.row.skuDefaultImg" style="width:80px;height:80px;" />
         </template>
       </el-table-column>
-      <el-table-column prop="price" header-align="center" align="center" label="价格"></el-table-column>
-      <el-table-column prop="saleCount" header-align="center" align="center" label="销量"></el-table-column>
-      <el-table-column fixed="right" header-align="center" align="center" width="150" label="操作">
+      <el-table-column prop="price" header-align="center" align="center" label="Price"></el-table-column>
+      <el-table-column prop="saleCount" header-align="center" align="center" label="Sales"></el-table-column>
+      <el-table-column fixed="right" header-align="center" align="center" width="250" label="Actions">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="previewHandle(scope.row.skuId)">预览</el-button>
-          <el-button type="text" size="small" @click="commentHandle(scope.row.skuId)">评论</el-button>
+          <el-button type="text" size="small" @click="previewHandle(scope.row.skuId)">Preview</el-button>
+          <el-button type="text" size="small" @click="commentHandle(scope.row.skuId)">Comments</el-button>
           <el-dropdown
             @command="handleCommand(scope.row,$event)"
             size="small"
             split-button
             type="text"
           >
-            更多
+            More
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command="uploadImages">上传图片</el-dropdown-item>
               <el-dropdown-item command="seckillSettings">参与秒杀</el-dropdown-item>

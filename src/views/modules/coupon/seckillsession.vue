@@ -2,21 +2,21 @@
   <div class="mod-config">
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
       <el-form-item>
-        <el-input v-model="dataForm.key" placeholder="参数名" clearable></el-input>
+        <el-input v-model="dataForm.key" placeholder="Name" clearable></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="getDataList()">查询</el-button>
+        <el-button @click="getDataList()">Search</el-button>
         <el-button
           v-if="isAuth('coupon:seckillsession:save')"
           type="primary"
           @click="addOrUpdateHandle()"
-        >新增</el-button>
+        >Add</el-button>
         <el-button
           v-if="isAuth('coupon:seckillsession:delete')"
           type="danger"
           @click="deleteHandle()"
           :disabled="dataListSelections.length <= 0"
-        >批量删除</el-button>
+        >Batch Delete</el-button>
       </el-form-item>
     </el-form>
     <el-table
@@ -27,17 +27,17 @@
       style="width: 100%;"
     >
       <el-table-column type="selection" header-align="center" align="center" width="50"></el-table-column>
-      <el-table-column prop="id" header-align="center" align="center" label="id"></el-table-column>
-      <el-table-column prop="name" header-align="center" align="center" label="场次名称"></el-table-column>
-      <el-table-column prop="startTime" header-align="center" align="center" label="每日开始时间"></el-table-column>
-      <el-table-column prop="endTime" header-align="center" align="center" label="每日结束时间"></el-table-column>
-      <el-table-column prop="status" header-align="center" align="center" label="启用状态"></el-table-column>
-      <el-table-column prop="createTime" header-align="center" align="center" label="创建时间"></el-table-column>
-      <el-table-column fixed="right" header-align="center" align="center" width="150" label="操作">
+      <el-table-column prop="id" header-align="center" align="center" label="Session Id"></el-table-column>
+      <el-table-column prop="name" header-align="center" align="center" label="Session Name"></el-table-column>
+      <el-table-column prop="startTime" header-align="center" align="center" label="Start Time"></el-table-column>
+      <el-table-column prop="endTime" header-align="center" align="center" label="End Time"></el-table-column>
+      <el-table-column prop="status" header-align="center" align="center" label="Status"></el-table-column>
+      <el-table-column prop="createTime" header-align="center" align="center" label="Create Time"></el-table-column>
+      <el-table-column fixed="right" header-align="center" align="center" width="150" label="Actions">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="relationProduct(scope.row.id)">关联商品</el-button>
-          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">修改</el-button>
-          <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">删除</el-button>
+          <el-button type="text" size="small" @click="relationProduct(scope.row.id)">Related Product</el-button>
+          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">Update</el-button>
+          <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">Delete</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -57,8 +57,8 @@
         append-to-body
         :close-on-click-modal="false"
         :visible.sync="visible"
-        title="关联秒杀商品"
-        width="60%"
+        title="Products Associated with the Current Session"
+        width="65%"
       >
         <seckillsku-relation ref="seckillskuRelation" :sessionId="currentId"></seckillsku-relation>
       </el-dialog>

@@ -2,9 +2,9 @@
   <div class="mod-oss">
     <el-form :inline="true" :model="dataForm">
       <el-form-item>
-        <el-button type="primary" @click="configHandle()">云存储配置</el-button>
-        <el-button type="primary" @click="uploadHandle()">上传文件</el-button>
-        <el-button type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
+        <el-button type="primary" @click="configHandle()">Cloud Storage Config</el-button>
+        <el-button type="primary" @click="uploadHandle()">File Uploading</el-button>
+        <el-button type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">Batch Delete</el-button>
       </el-form-item>
     </el-form>
     <el-table
@@ -30,23 +30,23 @@
         prop="url"
         header-align="center"
         align="center"
-        label="URL地址">
+        label="URL Address">
       </el-table-column>
       <el-table-column
         prop="createDate"
         header-align="center"
         align="center"
         width="180"
-        label="创建时间">
+        label="Create Time">
       </el-table-column>
       <el-table-column
         fixed="right"
         header-align="center"
         align="center"
         width="150"
-        label="操作">
+        label="Actions">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">删除</el-button>
+          <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">Delete</el-button>
         </template>
       </el-table-column>
     </el-table>

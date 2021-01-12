@@ -7,22 +7,22 @@
       <div class="mod-config">
         <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
           <el-form-item>
-            <el-input v-model="dataForm.key" placeholder="参数名" clearable></el-input>
+            <el-input v-model="dataForm.key" placeholder="Name" clearable></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button @click="getDataList()">查询</el-button>
-            <el-button type="success" @click="getAllDataList()">查询全部</el-button>
+            <el-button @click="getDataList()">Search</el-button>
+            <el-button type="success" @click="getAllDataList()">Search All</el-button>
             <el-button
               v-if="isAuth('product:attr:save')"
               type="primary"
               @click="addOrUpdateHandle()"
-            >新增</el-button>
+            >Add</el-button>
             <el-button
               v-if="isAuth('product:attr:delete')"
               type="danger"
               @click="deleteHandle()"
               :disabled="dataListSelections.length <= 0"
-            >批量删除</el-button>
+            >Batch Delete</el-button>
           </el-form-item>
         </el-form>
         <el-table
@@ -33,28 +33,29 @@
           style="width: 100%;"
         >
           <el-table-column type="selection" header-align="center" align="center" width="50"></el-table-column>
-          <el-table-column prop="attrId" header-align="center" align="center" label="id"></el-table-column>
-          <el-table-column prop="attrName" header-align="center" align="center" label="属性名"></el-table-column>
+          <el-table-column prop="attrId" header-align="center" align="center" label="Id"></el-table-column>
+          <el-table-column prop="attrName" header-align="center" align="center" width="100" label="Attr Name"></el-table-column>
           <el-table-column
             v-if="attrtype == 1"
             prop="searchType"
             header-align="center"
             align="center"
-            label="可检索"
+            width="100"
+            label="Searchable"
           >
             <template slot-scope="scope">
               <i class="el-icon-success" v-if="scope.row.searchType==1"></i>
               <i class="el-icon-error" v-else></i>
             </template>
           </el-table-column>
-          <el-table-column prop="valueType" header-align="center" align="center" label="值类型">
+          <el-table-column prop="valueType" header-align="center" align="center" width="100" label="Value Type">
             <template slot-scope="scope">
-              <el-tag type="success" v-if="scope.row.valueType==0">单选</el-tag>
-              <el-tag v-else>多选</el-tag>
+              <el-tag type="success" v-if="scope.row.valueType==0">Single</el-tag>
+              <el-tag v-else>Multiple</el-tag>
             </template>
           </el-table-column>
-          <el-table-column prop="icon" header-align="center" align="center" label="图标"></el-table-column>
-          <el-table-column prop="valueSelect" header-align="center" align="center" label="可选值">
+          <el-table-column prop="icon" header-align="center" align="center" label="Icon"></el-table-column>
+          <el-table-column prop="valueSelect" header-align="center" align="center" width="120" label="Option Values">
             <template slot-scope="scope">
               <el-tooltip placement="top">
                 <div slot="content">
@@ -64,21 +65,22 @@
               </el-tooltip>
             </template>
           </el-table-column>
-          <el-table-column prop="enable" header-align="center" align="center" label="启用">
+          <el-table-column prop="enable" header-align="center" align="center" label="Enable">
             <template slot-scope="scope">
               <i class="el-icon-success" v-if="scope.row.enable==1"></i>
               <i class="el-icon-error" v-else></i>
             </template>
           </el-table-column>
-          <el-table-column prop="catelogName" header-align="center" align="center" label="所属分类"></el-table-column>
+          <el-table-column prop="catelogName" header-align="center" align="center" width="100" label="Category"></el-table-column>
           <el-table-column
+            width="100"
             v-if="attrtype == 1"
             prop="groupName"
             header-align="center"
             align="center"
-            label="所属分组"
+            label="Attr. Group"
           ></el-table-column>
-          <el-table-column v-if="attrtype == 1" prop="showDesc" header-align="center" align="center" label="快速展示">
+          <el-table-column v-if="attrtype == 1" prop="showDesc" header-align="center" width="100" align="center" label="Quick show">
             <template slot-scope="scope">
               <i class="el-icon-success" v-if="scope.row.showDesc==1"></i>
               <i class="el-icon-error" v-else></i>
@@ -89,11 +91,11 @@
             header-align="center"
             align="center"
             width="150"
-            label="操作"
+            label="Actions"
           >
             <template slot-scope="scope">
-              <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.attrId)">修改</el-button>
-              <el-button type="text" size="small" @click="deleteHandle(scope.row.attrId)">删除</el-button>
+              <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.attrId)">Update</el-button>
+              <el-button type="text" size="small" @click="deleteHandle(scope.row.attrId)">Delete</el-button>
             </template>
           </el-table-column>
         </el-table>

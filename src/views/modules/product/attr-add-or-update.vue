@@ -1,49 +1,49 @@
 <template>
   <el-dialog
-    :title="!dataForm.id ? '新增' : '修改'"
+    :title="!dataForm.id ? 'Add' : 'Update'"
     :close-on-click-modal="false"
     :visible.sync="visible"
     @closed="dialogClose"
   >
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" label-width="120px">
-      <el-form-item label="属性名" prop="attrName">
-        <el-input v-model="dataForm.attrName" placeholder="属性名"></el-input>
+      <el-form-item label="Name" prop="attrName">
+        <el-input v-model="dataForm.attrName" placeholder="Attribute Name"></el-input>
       </el-form-item>
-      <el-form-item label="属性类型" prop="attrType">
+      <el-form-item label="Type" prop="attrType">
         <el-select v-model="dataForm.attrType" placeholder="请选择">
-          <el-option label="规格参数" :value="1"></el-option>
-          <el-option label="销售属性" :value="0"></el-option>
+          <el-option label="Regular Attribute" :value="1"></el-option>
+          <el-option label="Sales Attribute" :value="0"></el-option>
         </el-select>
       </el-form-item>
 
-      <el-form-item label="值类型" prop="valueType">
+      <el-form-item label="Value Type" prop="valueType">
         <el-switch
           v-model="dataForm.valueType"
-          active-text="允许多个值"
-          inactive-text="只能单个值"
+          active-text="Multiple"
+          inactive-text="Single"
           active-color="#13ce66"
           inactive-color="#ff4949"
           :inactive-value="0"
           :active-value="1"
         ></el-switch>
       </el-form-item>
-      <el-form-item label="可选值" prop="valueSelect">
+      <el-form-item label="Options" prop="valueSelect">
         <el-select
           v-model="dataForm.valueSelect"
           multiple
           filterable
           allow-create
-          placeholder="请输入内容"
+          placeholder="Please input data"
         ></el-select>
       </el-form-item>
-      <el-form-item label="属性图标" prop="icon">
-        <el-input v-model="dataForm.icon" placeholder="属性图标"></el-input>
+      <el-form-item label="Icon" prop="icon">
+        <el-input v-model="dataForm.icon" placeholder="Icon"></el-input>
       </el-form-item>
-      <el-form-item label="所属分类" prop="catelogId">
+      <el-form-item label="Category" prop="catelogId">
         <category-cascader :catelogPath.sync="catelogPath"></category-cascader>
       </el-form-item>
-      <el-form-item label="所属分组" prop="attrGroupId" v-if="type == 1">
-        <el-select ref="groupSelect" v-model="dataForm.attrGroupId" placeholder="请选择">
+      <el-form-item label="Attribute Group" prop="attrGroupId" v-if="type == 1">
+        <el-select ref="groupSelect" v-model="dataForm.attrGroupId" placeholder="Please choose">
           <el-option
             v-for="item in attrGroups"
             :key="item.attrGroupId"
@@ -52,7 +52,7 @@
           ></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="可检索" prop="searchType" v-if="type == 1">
+      <el-form-item label="Searchable" prop="searchType" v-if="type == 1">
         <el-switch
           v-model="dataForm.searchType"
           active-color="#13ce66"
@@ -61,7 +61,7 @@
           :inactive-value="0"
         ></el-switch>
       </el-form-item>
-      <el-form-item label="快速展示" prop="showDesc" v-if="type == 1">
+      <el-form-item label="Quick Show" prop="showDesc" v-if="type == 1">
         <el-switch
           v-model="dataForm.showDesc"
           active-color="#13ce66"
@@ -70,7 +70,7 @@
           :inactive-value="0"
         ></el-switch>
       </el-form-item>
-      <el-form-item label="启用状态" prop="enable">
+      <el-form-item label="Enable" prop="enable">
         <el-switch
           v-model="dataForm.enable"
           active-color="#13ce66"
@@ -81,8 +81,8 @@
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="visible = false">取消</el-button>
-      <el-button type="primary" @click="dataFormSubmit()">确定</el-button>
+      <el-button @click="visible = false">Cancel</el-button>
+      <el-button type="primary" @click="dataFormSubmit()">Confirm</el-button>
     </span>
   </el-dialog>
 </template>

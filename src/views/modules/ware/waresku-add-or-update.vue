@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    :title="!dataForm.id ? '新增' : '修改'"
+    :title="!dataForm.id ? 'Add' : 'Update'"
     :close-on-click-modal="false"
     :visible.sync="visible"
   >
@@ -14,24 +14,24 @@
       <el-form-item label="sku_id" prop="skuId">
         <el-input v-model="dataForm.skuId" placeholder="sku_id"></el-input>
       </el-form-item>
-      <el-form-item label="仓库" prop="wareId">
-        <el-select v-model="dataForm.wareId" placeholder="请选择仓库" clearable>
+      <el-form-item label="Ware" prop="wareId">
+        <el-select v-model="dataForm.wareId" placeholder="Choose Ware" clearable>
           <el-option :label="w.name" :value="w.id" v-for="w in wareList" :key="w.id"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="库存数" prop="stock">
-        <el-input v-model="dataForm.stock" placeholder="库存数"></el-input>
+      <el-form-item label="Quantity" prop="stock">
+        <el-input v-model="dataForm.stock" placeholder="Stock Quantity"></el-input>
       </el-form-item>
       <el-form-item label="sku_name" prop="skuName">
         <el-input v-model="dataForm.skuName" placeholder="sku_name"></el-input>
       </el-form-item>
-      <el-form-item label="锁定库存" prop="stockLocked">
-        <el-input v-model="dataForm.stockLocked" placeholder="锁定库存"></el-input>
+      <el-form-item label="Lock Quantity" prop="stockLocked">
+        <el-input v-model="dataForm.stockLocked" placeholder="Lock Quantity"></el-input>
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="visible = false">取消</el-button>
-      <el-button type="primary" @click="dataFormSubmit()">确定</el-button>
+      <el-button @click="visible = false">Cancel</el-button>
+      <el-button type="primary" @click="dataFormSubmit()">Confirm</el-button>
     </span>
   </el-dialog>
 </template>

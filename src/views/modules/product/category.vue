@@ -1,8 +1,8 @@
 <template>
   <div>
-    <el-switch v-model="draggable" active-text="开启拖拽" inactive-text="关闭拖拽" style="marginRight: 15px"></el-switch>
-    <el-button v-if="draggable" type="primary" @click="batchSave" style="marginBottom: 10px">批量保存</el-button>
-    <el-button type="danger" @click="batchDelete" style="marginBottom: 10px">批量删除</el-button>
+    <el-switch v-model="draggable" active-text="Enable Drag" inactive-text="Disable Drag" style="marginRight: 15px"></el-switch>
+    <el-button v-if="draggable" type="primary" @click="batchSave" style="marginBottom: 10px">Batch Save</el-button>
+    <el-button type="danger" @click="batchDelete" style="marginBottom: 10px">Batch Delete</el-button>
 
     <el-tree
       :data="menus"
@@ -42,19 +42,19 @@
     <!-- 添加/修改 对话框 -->
     <el-dialog :title="dialogTitle" :visible.sync="dialogVisible" width="30%" :close-on-click-modal="false">
       <el-form :model="category">
-        <el-form-item label="分类名称">
+        <el-form-item label="Category Name">
           <el-input v-model="category.name" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="图标">
+        <el-form-item label="Icon">
           <el-input v-model="category.icon" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="计量单位">
+        <el-form-item label="Product Unit">
           <el-input v-model="category.productUnit" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="submitData">确 定</el-button>
+        <el-button @click="dialogVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="submitData">Confirm</el-button>
       </span>
     </el-dialog>
   </div>
@@ -133,7 +133,7 @@ export default {
         data: this.$http.adornData(this.updateNodes, false)
       }).then(({ data }) => {
         this.$message({
-          message: "修改成功",
+          message: "Succeed",
           type: "success"
         });
         // 刷新菜单
@@ -273,7 +273,7 @@ export default {
     edit(data) {
       this.dialogVisible = true;
       this.dialogType = "edit";
-      this.dialogTitle = "修改分类";
+      this.dialogTitle = "Update Category";
 
       // 根据分类id获取分类信息 - 用于回显分类信息
       this.$http({
@@ -314,7 +314,7 @@ export default {
     append(data) {
       this.dialogVisible = true;
       this.dialogType = "add";
-      this.dialogTitle = "添加分类";
+      this.dialogTitle = "Add Category";
 
       this.category.parentCid = data.catId;
       this.category.catLevel = data.catLevel * 1 + 1;

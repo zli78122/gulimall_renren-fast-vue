@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    :title="!dataForm.id ? '新增' : '修改'"
+    :title="!dataForm.id ? 'Add' : 'Update'"
     :close-on-click-modal="false"
     :visible.sync="visible"
   >
@@ -11,14 +11,14 @@
       @keyup.enter.native="dataFormSubmit()"
       label-width="120px"
     >
-      <el-form-item label="采购商品id" prop="skuId">
-        <el-input v-model="dataForm.skuId" placeholder="采购商品id"></el-input>
+      <el-form-item label="SKU Id" prop="skuId">
+        <el-input v-model="dataForm.skuId" placeholder="SKU Id"></el-input>
       </el-form-item>
-      <el-form-item label="采购数量" prop="skuNum">
-        <el-input v-model="dataForm.skuNum" placeholder="采购数量"></el-input>
+      <el-form-item label="Quantity" prop="skuNum">
+        <el-input v-model="dataForm.skuNum" placeholder="Quantity"></el-input>
       </el-form-item>
-      <el-form-item label="仓库" prop="wareId">
-        <el-select v-model="dataForm.wareId" placeholder="请选择仓库" clearable>
+      <el-form-item label="Ware" prop="wareId">
+        <el-select v-model="dataForm.wareId" placeholder="Choose Ware" clearable>
           <el-option :label="w.name" :value="w.id" v-for="w in wareList" :key="w.id"></el-option>
         </el-select>
       </el-form-item>
@@ -34,8 +34,8 @@
       </el-form-item>-->
     </el-form>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="visible = false">取消</el-button>
-      <el-button type="primary" @click="dataFormSubmit()">确定</el-button>
+      <el-button @click="visible = false">Cancel</el-button>
+      <el-button type="primary" @click="dataFormSubmit()">Confirm</el-button>
     </span>
   </el-dialog>
 </template>

@@ -1,33 +1,33 @@
 <template>
   <div class="mod-config">
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
-      <el-form-item label="仓库">
-        <el-select style="width:120px;" v-model="dataForm.wareId" placeholder="请选择仓库" clearable>
+      <el-form-item label="Ware">
+        <el-select style="width:120px;" v-model="dataForm.wareId" placeholder="Ware" clearable>
           <el-option :label="w.name" :value="w.id" v-for="w in wareList" :key="w.id"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="状态">
-        <el-select style="width:120px;" v-model="dataForm.status" placeholder="请选择状态" clearable>
-          <el-option label="新建" :value="0"></el-option>
-          <el-option label="已分配" :value="1"></el-option>
-          <el-option label="正在采购" :value="2"></el-option>
-          <el-option label="已完成" :value="3"></el-option>
-          <el-option label="采购失败" :value="4"></el-option>
+      <el-form-item label="Status">
+        <el-select style="width:120px;" v-model="dataForm.status" placeholder="Status" clearable>
+          <el-option label="New" :value="0"></el-option>
+          <el-option label="Assigned" :value="1"></el-option>
+          <el-option label="Purchasing" :value="2"></el-option>
+          <el-option label="Completed" :value="3"></el-option>
+          <el-option label="Failed" :value="4"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="关键字">
-        <el-input style="width:120px;" v-model="dataForm.key" placeholder="参数名" clearable></el-input>
+      <el-form-item label="Keyword">
+        <el-input style="width:120px;" v-model="dataForm.key" placeholder="Keyword" clearable></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="getDataList()">查询</el-button>
+        <el-button @click="getDataList()">Search</el-button>
         <el-button
           v-if="isAuth('ware:purchasedetail:save')"
           type="primary"
           @click="addOrUpdateHandle()"
-        >新增</el-button>
+        >Add</el-button>
         <el-dropdown @command="handleBatchCommand" :disabled="dataListSelections.length <= 0">
           <el-button type="danger">
-            批量操作
+            Batch Delete
             <i class="el-icon-arrow-down el-icon--right"></i>
           </el-button>
           <el-dropdown-menu slot="dropdown">
@@ -45,25 +45,25 @@
       style="width: 100%;"
     >
       <el-table-column type="selection" header-align="center" align="center" width="50"></el-table-column>
-      <el-table-column prop="id" header-align="center" align="center" label="id"></el-table-column>
-      <el-table-column prop="purchaseId" header-align="center" align="center" label="采购单id"></el-table-column>
-      <el-table-column prop="skuId" header-align="center" align="center" label="采购商品id"></el-table-column>
-      <el-table-column prop="skuNum" header-align="center" align="center" label="采购数量"></el-table-column>
-      <el-table-column prop="skuPrice" header-align="center" align="center" label="采购金额"></el-table-column>
-      <el-table-column prop="wareId" header-align="center" align="center" label="仓库id"></el-table-column>
-      <el-table-column prop="status" header-align="center" align="center" label="状态">
+      <el-table-column prop="id" header-align="center" align="center" label="Id"></el-table-column>
+      <el-table-column prop="purchaseId" header-align="center" align="center" label="Purchase Id"></el-table-column>
+      <el-table-column prop="skuId" header-align="center" align="center" label="SKU Id"></el-table-column>
+      <el-table-column prop="skuNum" header-align="center" align="center" label="Quantity"></el-table-column>
+      <el-table-column prop="skuPrice" header-align="center" align="center" label="Total Price"></el-table-column>
+      <el-table-column prop="wareId" header-align="center" align="center" label="Ware Id"></el-table-column>
+      <el-table-column prop="status" header-align="center" align="center" label="Status">
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.status==0">新建</el-tag>
-          <el-tag type="info" v-if="scope.row.status==1">已分配</el-tag>
-          <el-tag type="wanring" v-if="scope.row.status==2">正在采购</el-tag>
-          <el-tag type="success" v-if="scope.row.status==3">已完成</el-tag>
-          <el-tag type="danger" v-if="scope.row.status==4">采购失败</el-tag>
+          <el-tag v-if="scope.row.status==0">New</el-tag>
+          <el-tag type="info" v-if="scope.row.status==1">Assigned</el-tag>
+          <el-tag type="wanring" v-if="scope.row.status==2">Purchasing</el-tag>
+          <el-tag type="success" v-if="scope.row.status==3">Completed</el-tag>
+          <el-tag type="danger" v-if="scope.row.status==4">Failed</el-tag>
         </template>
       </el-table-column>
-      <el-table-column fixed="right" header-align="center" align="center" width="150" label="操作">
+      <el-table-column fixed="right" header-align="center" align="center" width="150" label="Actions">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">修改</el-button>
-          <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">删除</el-button>
+          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">Update</el-button>
+          <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">Delete</el-button>
         </template>
       </el-table-column>
     </el-table>

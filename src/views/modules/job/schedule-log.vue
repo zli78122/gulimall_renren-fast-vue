@@ -1,15 +1,15 @@
 <template>
   <el-dialog
-    title="日志列表"
+    title="Log List"
     :close-on-click-modal="false"
     :visible.sync="visible"
     width="75%">
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
       <el-form-item>
-        <el-input v-model="dataForm.id" placeholder="任务ID" clearable></el-input>
+        <el-input v-model="dataForm.id" placeholder="Task ID" clearable></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="getDataList()">查询</el-button>
+        <el-button @click="getDataList()">Search</el-button>
       </el-form-item>
     </el-form>
     <el-table
@@ -23,49 +23,49 @@
         header-align="center"
         align="center"
         width="80"
-        label="日志ID">
+        label="Log ID">
       </el-table-column>
       <el-table-column
         prop="jobId"
         header-align="center"
         align="center"
         width="80"
-        label="任务ID">
+        label="Task ID">
       </el-table-column>
       <el-table-column
         prop="beanName"
         header-align="center"
         align="center"
-        label="bean名称">
+        label="Bean Name">
       </el-table-column>
       <el-table-column
         prop="params"
         header-align="center"
         align="center"
-        label="参数">
+        label="Params">
       </el-table-column>
       <el-table-column
         prop="status"
         header-align="center"
         align="center"
-        label="状态">
+        label="Status">
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.status === 0" size="small">成功</el-tag>
-          <el-tag v-else @click.native="showErrorInfo(scope.row.logId)" size="small" type="danger" style="cursor: pointer;">失败</el-tag>
+          <el-tag v-if="scope.row.status === 0" size="small">Succeed</el-tag>
+          <el-tag v-else @click.native="showErrorInfo(scope.row.logId)" size="small" type="danger" style="cursor: pointer;">Failed</el-tag>
         </template>
       </el-table-column>
       <el-table-column
         prop="times"
         header-align="center"
         align="center"
-        label="耗时(单位: 毫秒)">
+        label="Time(ms)">
       </el-table-column>
       <el-table-column
         prop="createTime"
         header-align="center"
         align="center"
         width="180"
-        label="执行时间">
+        label="Execute Time">
       </el-table-column>
     </el-table>
     <el-pagination

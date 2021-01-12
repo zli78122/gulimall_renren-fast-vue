@@ -2,21 +2,21 @@
   <div class="mod-config">
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
       <el-form-item>
-        <el-input v-model="dataForm.key" placeholder="参数名" clearable></el-input>
+        <el-input v-model="dataForm.key" placeholder="Name" clearable></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="getDataList()">查询</el-button>
+        <el-button @click="getDataList()">Search</el-button>
         <el-button
           v-if="isAuth('coupon:memberprice:save')"
           type="primary"
           @click="addOrUpdateHandle()"
-        >新增</el-button>
+        >Add</el-button>
         <el-button
           v-if="isAuth('coupon:memberprice:delete')"
           type="danger"
           @click="deleteHandle()"
           :disabled="dataListSelections.length <= 0"
-        >批量删除</el-button>
+        >Batch Delete</el-button>
       </el-form-item>
     </el-form>
     <el-table
@@ -28,25 +28,25 @@
     >
       <el-table-column type="selection" header-align="center" align="center" width="50"></el-table-column>
       <el-table-column prop="id" header-align="center" align="center" label="id"></el-table-column>
-      <el-table-column prop="skuId" header-align="center" align="center" label="sku_id"></el-table-column>
-      <el-table-column prop="memberLevelId" header-align="center" align="center" label="会员等级id"></el-table-column>
-      <el-table-column prop="memberLevelName" header-align="center" align="center" label="会员等级名"></el-table-column>
-      <el-table-column prop="memberPrice" header-align="center" align="center" label="会员对应价格"></el-table-column>
+      <el-table-column prop="skuId" header-align="center" align="center" label="SKU Id"></el-table-column>
+      <el-table-column prop="memberLevelId" header-align="center" align="center" label="Member Level Id"></el-table-column>
+      <el-table-column prop="memberLevelName" header-align="center" align="center" label="Level Name"></el-table-column>
+      <el-table-column prop="memberPrice" header-align="center" align="center" label="Member Price"></el-table-column>
       <el-table-column
         prop="addOther"
         header-align="center"
         align="center"
-        label="可否叠加其他优惠"
+        label="Superposable"
       >
         <template slot-scope="scope">
-          <el-tag type="primary" v-if="scope.row.addOther==0">不可叠加优惠</el-tag>
-          <el-tag type="success" v-else>可叠加优惠</el-tag>
+          <el-tag type="primary" v-if="scope.row.addOther==0">No</el-tag>
+          <el-tag type="success" v-else>Yes</el-tag>
         </template>
       </el-table-column>
-      <el-table-column fixed="right" header-align="center" align="center" width="150" label="操作">
+      <el-table-column fixed="right" header-align="center" align="center" width="150" label="Actions">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">修改</el-button>
-          <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">删除</el-button>
+          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">Update</el-button>
+          <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">Delete</el-button>
         </template>
       </el-table-column>
     </el-table>
